@@ -21,6 +21,7 @@ pip install pandas -i https://pypi.doubanio.com/simple/
 conda install -c anaconda pandas  
 输入y开始pandas库的配置工作**  
 
+  
 import pandas as pd #引入 pandas 模块   
 
 
@@ -45,10 +46,10 @@ pd.set_option('display.unicode.east_asian_width', True)
   
 构建 DataFrame 最常用的方法：传入一个由**等长列表**组成的字典。即字典里每个值都是列表，且它们的长度必需相等。   
 data = {
-  '炸鸡': [14, 20，30],
-  '面包': [7, 3，6],
-  '可乐': [8, 13，9],
-  '烤肠': [10, 6，2]
+  '炸鸡': [14, 20,30],
+  '面包': [7, 3,6],
+  '可乐': [8, 13,9],
+  '烤肠': [10, 6,2]
 }                          #每列标签：表头
 df = pd.DataFrame(data, index=['2020-01-01', '2020-01-02'，'2020-01-03'])  #每行标签（索引）
 print(df)
