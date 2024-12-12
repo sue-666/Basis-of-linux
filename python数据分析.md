@@ -16,10 +16,11 @@ pip install pandas -i https://pypi.doubanio.com/simple/
 ### 在一个名称为pystudy的Python虚拟环境中配置pandas库： 
 **conda activate pystudy  
 conda install -c anaconda pandas  
-输入y开始pandas库的配置工作
-import pandas as pd #引入 pandas 模块**   
+输入y开始pandas库的配置工作**  
 
-## Series  
+import pandas as pd #引入 pandas 模块   
+  
+## Series  一维数据，S大写  
 类似于 Numpy 中一维数组的对象，由**索引--数据**组成。例子：  
 print(pd.Series([2, 4, 6, 8], index=['a', 'b', 'c', 'd']))  #不特指时默认列表[]索引：index=[0，1，2，3]  
 或使用**字典{}**：  键作为数据标签，值作为相对应的数据  
@@ -30,8 +31,22 @@ print(s1.add(s2, fill_value=0))  # 调用 Series 的 **.add() 方法**，fill_va
 ![image](https://github.com/user-attachments/assets/960d6c9f-0bc9-419f-8caf-b481076d2b22)  
 
 
-
-
+    
+## DataFrame  二维数据（表格）表格中的每一行或每一列都是一个 Series    
+   
+表格中有中文时：中文占用的字符和英文、数字占用的字符不一样，调用 pd.set_option() 使表格对齐显示：  
+pd.set_option('display.unicode.ambiguous_as_wide', True)  
+pd.set_option('display.unicode.east_asian_width', True)  
+  
+构建 DataFrame 最常用的方法：传入一个由**等长列表**组成的字典。即字典里每个值都是列表，且它们的长度必需相等。   
+data = {
+  '炸鸡': [14, 20，30],
+  '面包': [7, 3，6],
+  '可乐': [8, 13，9],
+  '烤肠': [10, 6，2]
+}                          #每列标签：表头
+df = pd.DataFrame(data, index=['2020-01-01', '2020-01-02'，'2020-01-03'])  #每行标签（索引）
+print(df)
 
 
 
