@@ -1,7 +1,7 @@
 # pandas模块：   
 pandas模块是一个**基于NumPy**的开源**数据分析库**，提供了快速、灵活、易用的**数据结构和数据分析工具**。     
 
-表格中有中文时：中文占用的字符和英文、数字占用的字符不一样，调用 pd.set_option() 使**表格对齐**显示：  
+**表格 中英文 对齐**：中文占用的字符和英文、数字占用的字符不一样，调用 pd.set_option() ：  
 pd.set_option('display.unicode.ambiguous_as_wide', True)  
 pd.set_option('display.unicode.east_asian_width', True)  
 
