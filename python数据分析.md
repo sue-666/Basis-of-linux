@@ -105,9 +105,17 @@ df = df.sort_values('总和', ascending=False)    #第一个参数是要排序�
 
 
 
-#### 数据划分:  
-.cut( x数据 ，bins分类依据 ， labels类别标签 )  按某一列数据将其分割成若干区间，得到的 result 是一个 Series 类型变量  
+### 数据划分:  
+df['新加一列等级划分']=pd.cut( x数据df['分数'] ，bins分类依据[start,end] ， labels类别标签['不及格','优秀'] )   
+按某一列数据将其分割成若干区间，得到的 result 是一个 Series 类型变量  
 ![image](https://github.com/user-attachments/assets/01d88eb2-7a82-47cf-9db8-a04c76315dcd)  
+
+### 数据筛选:  
+ import numpy as np  
+ data = np.array([[1, 2], [3, 4], [5, 6]])  
+ 并且&     print(data[(data >= 2) & (data <= 4)])   # 输出：[2 3 4]   
+ 或者|    print(data[(data < 2) | (data > 4)])   # 输出：[1 5 6]  
+ ![image](https://github.com/user-attachments/assets/6c421534-ba12-48fe-83d9-c0a7a730dc72)  
 
 
 
