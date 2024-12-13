@@ -4,7 +4,7 @@ pandas模块是一个**基于NumPy**的开源**数据分析库**，提供了快�
 pip install pandas -i https://pypi.doubanio.com/simple/   
 #这句话后面 -i https://pypi.doubanio.com/simple/ 表示使用豆瓣的源，这样安装会更快  
   
-## 或者在Anaconda环境下，配置这一库的方法：  
+### 或者在Anaconda环境下，配置这一库的方法：  
 打开Anaconda Prompt软件：  ![image](https://github.com/user-attachments/assets/f43bf376-ff7e-4079-8f04-147937d86eb0)  
 在Python的使用过程中，我们常常由于不同Python版本以及不同第三方库版本的支持情况与相互之间的冲突情况，而需要创建不同的Python虚拟环境：  
 **conda env list**   #浏览当前Anaconda中的全部环境的情况  
@@ -56,22 +56,18 @@ df = pd.DataFrame(data, index=['2020-01-01', '2020-01-02'，'2020-01-03'])  #每
 print(df)
 
 
-## 列的查改增删  
+#### 列的查改增删  
 import pandas as pd   
 df = pd.DataFrame({'炸鸡': [14, 20], '面包': [7, 3], '可乐': [8, 13], '烤肠': [10, 6]})    
   
-### 查看列：  
-print(df[['可乐', '炸鸡']])     #中括号加列名  
-### 修改列：  
-df['可乐'] = [18, 23]   #重新赋值    
-### 新增列：  
-df['糖果'] = [3, 5]    #对表格中不存在的列直接赋值添加列  
-### 删除列：   .drop() 方法  
-df = df.drop('面包', axis=1)  #.drop() 第一个参数是要删除的列名/索引。axis 表示针对行或列进行删除，axis = 0 删除对应行，axis = 1 删除对应列，axis 默认为 0。  
+#### 查看列：  print(df[['可乐', '炸鸡']])     #中括号加列名  
+#### 修改列：  df['可乐'] = [18, 23]           #重新赋值    
+#### 新增列：  df['糖果'] = [3, 5]          #对表格中不存在的列直接赋值添加列  
+#### 删除列：   df = df.drop('面包', axis=1)    #.drop() 第一个参数是要删除的列名/索引。  axis 表示针对行或列进行删除，axis = 0 删除对应行，axis = 1 删除对应列，axis 默认为 0。  
 
 
     
-# 使用 pandas 导入导出表格文件.csv  
+### 使用 pandas 导入导出表格文件.csv  
    
 导入导出 .csv 文件,方法是 df = pd.read_csv() 和 df.to_csv()
 导入导出 Excel 文件，方法是 df = pd.read_excel() 和 df.to_excel()   
@@ -93,23 +89,26 @@ df['总和'] = df['第一季度'] + df['第二季度'] + df['第三季度'] + df
 ![image](https://github.com/user-attachments/assets/d1dcc891-ee5a-4b32-b0b0-5df939c2d2e2)  
   
 调用 max()、min()、mean()、sum() 等方法来计算最大值、最小值、平均值以及求和等：  
-## 最大值  df['总和'].max()  
+#### 最大值  df['总和'].max()  
   
-## 最小值  df['总和'].min()  
+#### 最小值  df['总和'].min()  
   
-## 平均  df['总和'].mean()  
+#### 平均  df['总和'].mean()  
   
-## 求和  df['总和'].sum()  
+#### 求和  df['总和'].sum()  
   
-## 用 sort_values() 方法对表格进行排序：  
+#### 用 sort_values() 方法对表格进行排序：  
 df = df.sort_values('总和', ascending=False)    #第一个参数是要排序的列（表格所有数据都跟随其改变顺序），排序默认升序，将 ascending 设为 False 改成降序，最大排第一： df.head(1)   
    
-## df.to_csv('2019年销售数据修改后.csv', index=False)   # 导出表格数据  
-#传入 index=False 是因为不希望将最左侧的索引保存到文件中  
+#### df.to_csv('2019年销售数据修改后.csv', index=False)     
+导出表格数据,传入 index=False 是因为不希望将最左侧的索引保存到文件中  
 
 
 
-## 数据划分:
+#### 数据划分:  
+.cut( x数据 ，bins分类依据 ， labels类别标签 )  按某一列数据将其分割成若干区间，得到的 result 是一个 Series 类型变量  
+![image](https://github.com/user-attachments/assets/01d88eb2-7a82-47cf-9db8-a04c76315dcd)  
+
 
 
 
