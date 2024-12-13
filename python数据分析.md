@@ -27,6 +27,7 @@ import pandas as pd #引入 pandas 模块
 
   
 ## Series  一维数据，S大写  
+  
 类似于 Numpy 中一维数组的对象，由**索引--数据**组成。例子：  
 print(pd.Series([2, 4, 6, 8], index=['a', 'b', 'c', 'd']))  #不特指时默认列表[]索引：index=[0，1，2，3]  
 或使用**字典{}**：  键作为数据标签，值作为相对应的数据  
@@ -53,6 +54,58 @@ data = {
 }                          #每列标签：表头
 df = pd.DataFrame(data, index=['2020-01-01', '2020-01-02'，'2020-01-03'])  #每行标签（索引）
 print(df)
+
+
+## 列的查改增删  
+import pandas as pd   
+df = pd.DataFrame({'炸鸡': [14, 20], '面包': [7, 3], '可乐': [8, 13], '烤肠': [10, 6]})    
+  
+### 查看列：  
+print(df[['可乐', '炸鸡']])     #中括号加列名  
+### 修改列：  
+df['可乐'] = [18, 23]   #重新赋值    
+### 新增列：  
+df['糖果'] = [3, 5]    #对表格中不存在的列直接赋值添加列  
+### 删除列：   .drop() 方法  
+df = df.drop('面包', axis=1)  #.drop() 第一个参数是要删除的列名/索引。axis 表示针对行或列进行删除，axis = 0 删除对应行，axis = 1 删除对应列，axis 默认为 0。  
+
+
+    
+# 使用 pandas 导入导出表格文件.csv
+  
+使用 pd.read_csv() 函数，将其导入到 pandas 中  
+import pandas as pd  
+**df = pd.read_csv('2019年销售数据.csv')**  
+print(type(df))  
+print(df.head())  # 使用 .head() 方法来查看前 5 条数据, print(df.head(2)): 查看前2条    
+print(df.tail())   # .tail()查看末尾的数据  
+**print(df.info())**   # 通过 info() 方法查看整个表格的大致信息, 有几行几列，以及哪列有多少条缺失数据  
+![image](https://github.com/user-attachments/assets/d6ea608a-0afe-4f13-9e07-9cfab27dbb9a)  
+**print(df.describe())**   # 通过 describe() 方法来快速查看数据的统计摘要,从上往下分别表示数量、平均数、标准差、最小值、25% 50% 75% 位置的值和最大值  
+![image](https://github.com/user-attachments/assets/f8bb08c2-cf71-476f-ae6b-00207ce904a9)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
