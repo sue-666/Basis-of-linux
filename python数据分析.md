@@ -1,5 +1,12 @@
 # pandas模块：   
-pandas模块是一个**基于NumPy**的开源**数据分析库**，提供了快速、灵活、易用的**数据结构和数据分析工具**。   
+pandas模块是一个**基于NumPy**的开源**数据分析库**，提供了快速、灵活、易用的**数据结构和数据分析工具**。     
+
+表格中有中文时：中文占用的字符和英文、数字占用的字符不一样，调用 pd.set_option() 使表格对齐显示：  
+pd.set_option('display.unicode.ambiguous_as_wide', True)  
+pd.set_option('display.unicode.east_asian_width', True)  
+
+
+  
 主要数据结构**Series（一维数据）和DataFrame（二维数据）**，可以处理各种数据格式，如CSV、Excel、SQL数据库等，支持数据清洗、缺失值处理、数据重组、数据分析和可视化等功能。  
 pip install pandas -i https://pypi.doubanio.com/simple/   
 #这句话后面 -i https://pypi.doubanio.com/simple/ 表示使用豆瓣的源，这样安装会更快  
@@ -41,9 +48,7 @@ print(s1.add(s2, fill_value=0))  # 调用 Series 的 **.add() 方法**，fill_va
     
 ## 2、 DataFrame  二维数据（表格）表格中的每一行或每一列都是一个 Series    
    
-表格中有中文时：中文占用的字符和英文、数字占用的字符不一样，调用 pd.set_option() 使表格对齐显示：  
-pd.set_option('display.unicode.ambiguous_as_wide', True)  
-pd.set_option('display.unicode.east_asian_width', True)  
+
   
 构建 DataFrame 最常用的方法：传入一个由**等长列表**组成的字典。即字典里每个值都是列表，且它们的长度必需相等。   
 data = {
@@ -105,7 +110,7 @@ df = df.sort_values('总和', ascending=False)    #第一个参数是要排序�
 
 
 
-## 3、 数据划分:  
+## 3、 数据分类、分区:  
   
 df['新加一列等级划分']=pd.cut( x数据df['分数'] ，bins分类依据[start,end] ， labels类别标签['不及格','优秀'] )   
 按某一列数据将其分割成若干区间，得到的 result 是一个 Series 类型变量  
