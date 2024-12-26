@@ -96,6 +96,8 @@ print(df.loc[[True, False, True, False, True]])   #将第 1、3、5 行数据筛
 
 ### 删除列：   df = df.drop('列标签-语文', axis=1)    #.drop() 第一个参数是要删除的列名/索引。  axis 表示针对行或列进行删除，axis = 0 删除对应行，axis = 1 删除对应列，axis 默认为 0。  
 ### 删除行：   df = df.drop('行标签-学号S02') 
+ 
+
 ![image](https://github.com/user-attachments/assets/cd7a4945-c9ca-4bb0-8330-c9d5b03bb941)  
 
 
@@ -165,10 +167,11 @@ tier_table['优秀率'] = tier_table['优秀'] / tier_table.sum(axis=1)
 
 **index**：数据透视表的**行**； **columns**：数据透视表的**列**； **aggfunc**："agg" 是单词 aggregate 的缩写，含义为“聚合”。在这里我们需要指定**对哪一列**数据进行何种**统计操作**，得到新表格单元格的值。对 '工号' 列执行计数（'count'）操作，写成代码就是 aggfunc={'工号': 'count'}  
 ![image](https://github.com/user-attachments/assets/83918de1-4923-463b-9573-de9977a87a5c)  
-  
-  
+
+![image](https://github.com/user-attachments/assets/b3cb9a3f-458c-4998-a3b6-b139c48d0eef)  
+
 ## 4、 数据筛选:  
-  
+  ![image](https://github.com/user-attachments/assets/cea80754-14f3-4cdd-b528-fa4ce8cbbb4d) 
  并且&       result=df[()&()] 同时满足2个条件  
  或者|       result=df[()|()]   满足任何1个条件 
  result = df[(df['绩效'] == '优秀') | (df['绩效'] == '不合格')]
