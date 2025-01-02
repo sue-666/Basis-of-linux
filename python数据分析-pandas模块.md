@@ -259,35 +259,44 @@ df.to_csv('豆瓣图书Top250修正.csv',index=False)
 ![image](https://github.com/user-attachments/assets/9e48d8ee-a836-42fa-a962-9287ba2424e5)   
 
 
-`df['订单日期'] = pd.to_datetime(df['订单日期'])`    将订单日期这一列从字符串格式转成**.to_datetime()日期格式**  
-`(pd.to_datetime('2019-12-31') - pd.to_datetime('2019-12-01')).days`   计算相差的天数  
+`df['订单日期'] = pd.to_datetime(df['订单日期'])`    将订单日期这一列从字符串格式转成**.to_datetime()日期格式**   
+`(pd.to_datetime('2019-12-31') - pd.to_datetime('2019-12-01')).days`   计算相差的天数   
   
   
-使用 pivot_table() 方法，一次性对相关数据进行聚合计算，计算 RFM。  
-将 df 中的所有数据按 用户名 分组 (index 参数)，然后对每组中的 订单日期、用户名、订单金额 三个列中的数据进行计算得出一个值，计算方式在 aggfunc 参数中指定。  
+使用 pivot_table() 方法，一次性对相关数据进行聚合计算，计算 RFM。    
+将 df 中的所有数据按 **用户名** 分组 (index 参数)，然后对每组中的 订单日期、用户名、订单金额 三个列中的数据进行计算得出一个值，计算方式在 aggfunc 参数中指定。  
+   
+**`RFM计算：   
+df['订单日期'] = pd.to_datetime(df['订单日期'])  
+df_rfm = df.pivot_table(  
+  index='用户名',  
+  aggfunc={                                  
+    # 计算 R  
+    '订单日期':lambda x: (pd.to_datetime('2019-12-31') - x.max()).days,  
+    # 计算 F  
+    '用户名': 'count',  
+    # 计算 M  
+    '订单金额': 'sum'  
+  }  
+)    
+df_rfm = df_rfm.rename(columns={'订单日期': 'R', '用户名': 'F', '订单金额': 'M'})   #rename() 方法来更新列名    
+df_rfm = df_rfm[['R', 'F', 'M']]    将列的顺序调整为 RFM 的顺序`**    
+
+
+
+## RFM 打分：  
+确定打分规则（对一列的数据进行操作用 apply() 方法） ： 定义一个名为 r_score 的函数，然后将 R 值打分的规则写到函数里，最后传给 apply() 方法应用到 R 列上
+def r_score(x):  
+  if x <= 29: 
+    return 4  
+  elif x <= 58:  
+    return 3  
+  elif x <= 119:  
+    return 2  
+  else:  
+    return 1  
   
-**`RFM计算： 
-df['订单日期'] = pd.to_datetime(df['订单日期'])
-df_rfm = df.pivot_table(
-  index='用户名',
-  aggfunc={                               
-    # 计算 R
-    '订单日期':lambda x: (pd.to_datetime('2019-12-31') - x.max()).days,
-    # 计算 F
-    '用户名': 'count',
-    # 计算 M
-    '订单金额': 'sum'
-  }
-)   
-df_rfm = df_rfm.rename(columns={'订单日期': 'R', '用户名': 'F', '订单金额': 'M'})   #rename() 方法来更新列名   
-df_rfm = df_rfm[['R', 'F', 'M']]    将列的顺序调整为 RFM 的顺序`**  
-
-
-
-
-
-
-
+df_rfm['r_score'] = df_rfm['R'].apply(r_score)  
 
 
 
