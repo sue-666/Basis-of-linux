@@ -85,7 +85,7 @@ eg:
 ### 5.2 颜色 颜色选取CSS网站：https://www.w3school.com.cn/cssref/css_colors.asp  
   
 #**方法一：创建柱形图时指定柱形颜色**   
-`old_members = Bar(x=df["月份"], y=df["老会员"], name='老会员',width=0.4,marker_color="CadetBlue")`  # 将柱形颜色设置为 CadetBlue（学员蓝）   
+`old_members = Bar(x=df["月份"], y=df["老会员"], name="老会员",width=0.4,marker_color="CadetBlue")`  # 将柱形颜色设置为 CadetBlue（学员蓝）   
 `figure.add_trace(old_members)`    
   
 #**方法二：创建完成后借助 update_trace() 方法 调整柱形颜色** 要对两个柱形设置不同的颜色，使用 update_trace() 调整样式时，需要**传入 selector 参数指定修改对象**。     
