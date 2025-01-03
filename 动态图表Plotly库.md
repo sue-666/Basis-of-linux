@@ -109,7 +109,7 @@ figure.update_layout(title=fig_title)
   
 #### 举例:   
 import pandas as pd  
-from plotly.graph_objects import Figure, Bar  
+from plotly.graph_objects import Figure, Bar, layout  
   
 #导入数据  
 df = pd.read_csv("俱乐部月客流量.csv")  
